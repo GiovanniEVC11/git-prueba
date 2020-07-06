@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" ng-app="PrimerModulo">
+  <head>
+    <meta charset="utf-8">
+    <title> Mandarin </title>
+    <!-- Libreria de angularJS 1.8.0 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"> </script>
+    <!-- Practica Uno de controladores con ROOT SCOPE -->
+    <script src="controller.js"> </script>
+    <!-- Practica Dos de componentes (isolating "external influences") -->
+    <script src="publicidad/componentes/advertising-list.components.js"> </script>
+  </head>
+
+  <body>
+
+    <header>
+
+    </header>
+
+    <main>
+
+      <section class="cssComentario" ng-controller="ComentariosControlador">
+
+        <div>
+          <input type="text" ng-model="newComment.tittle" placeholder="titulo">
+          <input type="text" ng-model="newComment.comment" placeholder="comentario">
+          <input type="text" ng-model="newComment.username" placeholder="usuario">
+
+          <button ng-click="addComment()"> Agregar Comentario </button>
+        </div>
+
+        <article class="cssComentarios">
+          <h2> Comentarios por usuario </h2>
+              <ul>
+                <li ng-repeat="comentario in comentarios">
+                      <strong> {{ comentario.tittle }} </strong> By <i> {{ comentario.username }} </i> <br> {{ comentario.comment }}
+                </li>
+              </ul>
+        </article>
+
+      </section>
+
+      <section ng-controller="ajaxHttpController">
+
+        <div>
+          <input type="text" ng-model="newComment.tittle" placeholder="titulo">
+          <input type="text" ng-model="newComment.comment" placeholder="comentario">
+          <input type="text" ng-model="newComment.email" placeholder="e-mail">
+
+          <button ng-click="addPost()"> Agregar Comentario </button>
+        </div>
+
+        <article class="cssComentarios">
+          <h2> Comentarios por correo (API_JSON) </h2>
+              <ul>
+                <li ng-repeat="post in posts">
+                      <strong> {{ post.name }} </strong> By <i> {{ post.email }} </i> <br> <p> {{ post.body }} </p>
+                </li>
+              </ul>
+        </article>
+
+      </section>
+
+      <advertising-list><advertising-list>
+
+    </main>
+
+    <footer ng-controller="FirstController">
+        {{ "WebPage with " + " AngularJS" + nombre }}
+    </footer>
+
+  </body>
+</html>
